@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <div className="bg-white text-black">
       <h1>This is home page</h1>
+      
     </div>
   );
 }
