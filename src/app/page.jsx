@@ -1,10 +1,12 @@
 import Image from "next/image";
+import HeroBanner from "./components/HeroBanner";
+import ServicesSection from "./components/ServicesSection";
 
 export default function Home() {
   return (
     <div className="bg-white text-black">
-      <h1>This is home page</h1>
-      
+      <HeroBanner />
+      <ServicesSection />
     </div>
   );
 }
