@@ -4,7 +4,6 @@ import Image from "next/image";
 import React from "react";
 
 function Services({ data }) {
-  console.log("data", data);
   return (
     <div>
       <motion.section
@@ -25,7 +24,7 @@ function Services({ data }) {
               className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: index * 0.1 }}
+              transition={{ duration: 0.9 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
@@ -41,9 +40,10 @@ function Services({ data }) {
                   className="object-cover"
                 />
               </div>
-              <button className="px-4 py-2 mt-2 rounded-lg bg-orange-600 text-white font-medium hover:bg-orange-700 transition-colors">
-                View Details
-              </button>
+              <p className="text-lg font-semibold text-gray-800 pt-2">
+                Price:{" "}
+                <span className="text-orange-500 font-bold">${item?.price}</span>
+              </p>
             </motion.div>
           ))}
         </div>

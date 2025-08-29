@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const HeroBanner = () => {
   return (
-    <div className="relative w-full h-[500px] md:h-[680px] overflow-hidden shadow-md">
+    <div className="relative w-full h-[500px] md:h-[700px] overflow-hidden shadow-md">
       {/* Background Image with Overlay */}
       <img
         src="/assets/images/banner/5.jpg"
