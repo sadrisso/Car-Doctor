@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function Services({ data }) {
@@ -29,21 +30,25 @@ function Services({ data }) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                {item?.title || "Item Title"}
-              </h3>
-              <div className="w-full h-48 relative rounded-lg overflow-hidden">
-                <Image
-                  src={item?.img || "/placeholder.jpg"}
-                  alt={item?.title || "Item"}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-lg font-semibold text-gray-800 pt-2">
-                Price:{" "}
-                <span className="text-orange-500 font-bold">${item?.price}</span>
-              </p>
+              <Link href={`/services/${item?._id}`}>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {item?.title || "Item Title"}
+                </h3>
+                <div className="w-full h-48 relative rounded-lg overflow-hidden">
+                  <Image
+                    src={item?.img || "/placeholder.jpg"}
+                    alt={item?.title || "Item"}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-lg font-semibold text-gray-800 pt-2">
+                  Price:{" "}
+                  <span className="text-orange-500 font-bold">
+                    ${item?.price}
+                  </span>
+                </p>
+              </Link>
             </motion.div>
           ))}
         </div>
