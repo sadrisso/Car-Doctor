@@ -8,13 +8,13 @@ function Services({ data }) {
   return (
     <div>
       <motion.section
-        className="px-4 py-12 max-w-7xl mx-auto"
+        className="px-4 py-8 max-w-7xl mx-auto"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
+        <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
           Our Items
         </h2>
 
