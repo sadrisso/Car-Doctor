@@ -23,8 +23,8 @@ function ServiceDetails({ data }) {
         {/* Centered Text */}
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.h3
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="text-white text-2xl md:text-4xl font-bold text-center"
           >
@@ -35,8 +35,8 @@ function ServiceDetails({ data }) {
 
       {/* Service Card */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="bg-white w-full mx-auto mt-6 shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row"
       >

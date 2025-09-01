@@ -1,12 +1,13 @@
 import ServiceDetails from "@/app/components/ServiceDetails";
 import dbConnect from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
-import Image from "next/image";
+
 
 async function ServiceDetailsPage({ params }) {
-  const id = params?.id;
+  const id = await params?.id;
   const servicesCollection = dbConnect("services");
   const data = await servicesCollection.findOne({ _id: new ObjectId(id) });
+  const services = JSON.parse(JSON.stringify(data));
 
   if (!data) {
     return (
@@ -16,7 +17,8 @@ async function ServiceDetailsPage({ params }) {
     );
   }
 
-  return <ServiceDetails data={data} />;
+
+  return <ServiceDetails data={services} />;
 }
 
 export default ServiceDetailsPage;
