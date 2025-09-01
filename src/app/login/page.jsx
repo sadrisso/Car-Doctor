@@ -3,51 +3,45 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-function RegisterPage() {
+function LoginPage() {
   const [form, setForm] = useState({
-    name: "",
     email: "",
     password: "",
-    confirm: "",
   });
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!form.email || !form.password) {
+      setError("All fields are required.");
+      return;
+    }
+
     setError("");
 
-    if (form.password.length < 6) {
-      setError("Password must be at least 6 characters.");
-      return;
-    }
-    if (form.password !== form.confirm) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    console.log("Register data:", form);
+    console.log("Login submitted", form);
   };
 
   return (
     <main className="min-h-[calc(100vh-80px)] flex items-center justify-center bg-gray-50 px-4 py-10">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.6 }}
         className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
       >
         <motion.h1
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2 }}
           className="mb-6 text-center text-2xl font-semibold text-gray-900"
         >
-          Create your account
+          Login to your account
         </motion.h1>
 
         <motion.form
@@ -55,27 +49,8 @@ function RegisterPage() {
           className="space-y-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+          transition={{ delay: 0.3 }}
         >
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              placeholder="John Doe"
-              className="w-full rounded-xl border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
-
           <div>
             <label
               htmlFor="email"
@@ -83,7 +58,8 @@ function RegisterPage() {
             >
               Email
             </label>
-            <input
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
               type="email"
               id="email"
               name="email"
@@ -102,7 +78,8 @@ function RegisterPage() {
             >
               Password
             </label>
-            <input
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
               type="password"
               id="password"
               name="password"
@@ -114,40 +91,27 @@ function RegisterPage() {
             />
           </div>
 
-          <div>
-            <label
-              htmlFor="confirm"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirm"
-              name="confirm"
-              value={form.confirm}
-              onChange={handleChange}
-              required
-              placeholder="••••••••"
-              className="w-full rounded-xl border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
-
           {error && <p className="text-sm text-red-600">{error}</p>}
 
           <motion.button
-            type="submit"
             whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.97 }}
+            whileTap={{ scale: 0.98 }}
+            type="submit"
             className="w-full rounded-xl bg-indigo-600 px-4 py-2 text-white font-medium shadow-sm transition hover:bg-indigo-700"
           >
-            Create Account
+            Login
           </motion.button>
-          <p className="text-center">Already Have an Account? <Link href="/login" className="text-blue-500">Login</Link></p>
+
+          <p className="text-center">
+            Don&apos;t Have an Account?{" "}
+            <Link href="/register" className="text-blue-500 hover:underline">
+              Register
+            </Link>
+          </p>
         </motion.form>
       </motion.div>
     </main>
   );
 }
 
-export default RegisterPage;
+export default LoginPage;

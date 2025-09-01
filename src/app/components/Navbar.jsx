@@ -76,7 +76,10 @@ const Navbar = () => {
           {/* Icons and Button */}
           <div className="flex items-center space-x-4">
             <ShoppingBagIcon className="h-6 w-6 text-gray-600 cursor-pointer hover:text-orange-600 transition-colors duration-200 hidden lg:block" />
-            <Link href="/register" className="hidden lg:block border border-orange-600 text-orange-600 font-medium py-2 px-4 rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-200">
+            <Link
+              href="/register"
+              className="hidden lg:block border border-orange-600 text-orange-600 font-medium py-2 px-4 rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-200"
+            >
               Register
             </Link>
             <button className="hidden lg:block border border-orange-600 text-orange-600 font-medium py-2 px-6 rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-200">
@@ -112,7 +115,13 @@ const Navbar = () => {
             {navMenu()}
             <div className="flex space-x-4 mb-6 mt-4">
               <ShoppingBagIcon className="h-6 w-6 text-gray-600" />
-              <MagnifyingGlassIcon className="h-6 w-6 text-gray-600" />
+              <Link
+                onClick={toggleMobileMenu}
+                href="/register"
+                className="lg:block border border-orange-600 text-orange-600 font-medium py-2 px-4 rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-200"
+              >
+                Register
+              </Link>
             </div>
           </div>
 
