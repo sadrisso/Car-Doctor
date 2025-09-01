@@ -9,9 +9,9 @@ function Services({ data }) {
     <div>
       <motion.section
         className="px-4 py-8 max-w-7xl mx-auto"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
         <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
@@ -25,7 +25,7 @@ function Services({ data }) {
               className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.9 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
