@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { signIn } from "next-auth/react"
 import Link from "next/link";
 
 function LoginForm() {
@@ -14,17 +15,18 @@ function LoginForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const {email, password} = form;
 
     if (!form.email || !form.password) {
       setError("All fields are required.");
       return;
     }
+    await signIn("credentials", {email, password, callbackUrl: "/"})
 
-    setError("");
-
-    console.log("Login submitted", form);
+    console.log("Login submitted", email, password);
   };
 
   return (
