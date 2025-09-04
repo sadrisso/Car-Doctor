@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { registerUser } from "@/app/actions/auth/registerUser";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 function RegisterForm() {
   const router = useRouter();
@@ -33,13 +34,20 @@ function RegisterForm() {
       setError("Passwords do not match.");
       return;
     }
-    
+
     JSON.parse(JSON.stringify(form));
 
     try {
       const res = await registerUser(form);
       if (res.success) {
         router.push("/login");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Registration Successful!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       } else {
         setError(res.message);
       }

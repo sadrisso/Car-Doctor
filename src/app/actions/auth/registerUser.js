@@ -1,5 +1,6 @@
 "use server";
 import dbConnect from "@/lib/dbConnect";
+import bcrypt from "bcrypt"
 
 export const registerUser = async (payload) => {
   const userCollection = dbConnect("users");
@@ -13,7 +14,12 @@ export const registerUser = async (payload) => {
     return {success: false, message: "Email Already Registered"}
   }
 
+  const hashedPassword = await bcrypt.hash(payload?.password, 10)
+  payload.password = hashedPassword;
+  delete payload.confirm;
+
   const res = await userCollection.insertOne(payload);
+  
   if (res?.insertedId) {
     console.log("Data Inserted Successfully!")
   }

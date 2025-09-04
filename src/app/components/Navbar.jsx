@@ -4,7 +4,6 @@ import {
   Bars3Icon,
   XMarkIcon,
   ShoppingBagIcon,
-  MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline"; // Using Heroicons for a clean look
 import Image from "next/image";
 import Link from "next/link";
@@ -82,9 +81,7 @@ const Navbar = () => {
             >
               Register
             </Link>
-            <button className="hidden lg:block border border-orange-600 text-orange-600 font-medium py-2 px-6 rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-200">
-              Appointment
-            </button>
+    
             {/* Mobile menu button */}
             <div className="flex lg:hidden">
               <button
@@ -124,11 +121,6 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-
-          {/* Appointment Button */}
-          <button className="border border-orange-600 text-orange-600 font-medium py-2 px-6 rounded-lg w-full text-left hover:bg-orange-600 hover:text-white transition-colors duration-200">
-            Appointment
-          </button>
 
           {/* Spacer to push button down if needed */}
           <div className="flex-grow"></div>

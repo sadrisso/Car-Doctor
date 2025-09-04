@@ -2,9 +2,8 @@ import ServiceDetails from "@/app/components/ServiceDetails";
 import dbConnect from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 
-
 async function ServiceDetailsPage({ params }) {
-  const id = await params?.id;
+  const { id } = await params;
   const servicesCollection = dbConnect("services");
   const data = await servicesCollection.findOne({ _id: new ObjectId(id) });
   const services = JSON.parse(JSON.stringify(data));
@@ -16,7 +15,6 @@ async function ServiceDetailsPage({ params }) {
       </div>
     );
   }
-
 
   return <ServiceDetails data={services} />;
 }
